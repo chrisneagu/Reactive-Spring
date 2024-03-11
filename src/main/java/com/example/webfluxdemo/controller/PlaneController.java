@@ -39,7 +39,8 @@ public class PlaneController {
     @GetMapping("/all/set")
     public Mono<Set<Plane>> allPlanesSet() {
         return planeService.findAllHashSet();
-      
+    }
+
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Plane> postPlane(@RequestBody Mono<Plane> plane){

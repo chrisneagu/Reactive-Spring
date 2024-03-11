@@ -33,6 +33,7 @@ public class PlaneServiceImpl
     @Override
     public Mono<Set<Plane>> findAllHashSet() {
         return planeRepository.findAll().collect(Collectors.toCollection(HashSet::new));
+    }
 
     @Override
     public Mono<Plane> save(Mono<Plane> plane) {
