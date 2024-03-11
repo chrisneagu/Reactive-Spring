@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Scheduler;
 
 import java.util.Set;
 
@@ -41,7 +42,7 @@ public class PlaneController {
         return planeService.findAllHashSet();
     }
 
-    @PostMapping(consumes = "application/json")
+    @PostMapping(path = "add", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Plane> postPlane(@RequestBody Mono<Plane> plane){
         return planeService.save(plane);
