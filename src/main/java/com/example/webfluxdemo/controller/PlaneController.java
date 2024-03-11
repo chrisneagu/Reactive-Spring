@@ -26,16 +26,20 @@ public class PlaneController {
         return planeService.findAll();
     }
 
-    @GetMapping("/all/set")
-    public Mono<Set<Plane>> allPlanesSet() {
-        return planeService.findAllHashSet();
-    }
-
     @GetMapping("/{id}")
     public Mono<Plane> planeById(@PathVariable("id") Long id) {
         return planeService.findById(id);
     }
 
+    @GetMapping("/all/flux")
+    public Flux<Plane> allPlanesFlux() {
+        return planeService.findAll();
+    }
+    
+    @GetMapping("/all/set")
+    public Mono<Set<Plane>> allPlanesSet() {
+        return planeService.findAllHashSet();
+      
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Plane> postPlane(@RequestBody Mono<Plane> plane){

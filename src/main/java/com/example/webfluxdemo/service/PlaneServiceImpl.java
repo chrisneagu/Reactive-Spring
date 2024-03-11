@@ -6,9 +6,13 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Service
 public class PlaneServiceImpl
-    implements PlaneService{
+        implements PlaneService {
 
     private final PlaneRepository planeRepository;
 
@@ -25,6 +29,10 @@ public class PlaneServiceImpl
     public Mono<Plane> findById(Long id) {
         return planeRepository.findById(id);
     }
+
+    @Override
+    public Mono<Set<Plane>> findAllHashSet() {
+        return planeRepository.findAll().collect(Collectors.toCollection(HashSet::new));
 
     @Override
     public Mono<Plane> save(Mono<Plane> plane) {

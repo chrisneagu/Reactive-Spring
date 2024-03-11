@@ -16,4 +16,6 @@ VALUES (1,'Model1','Manufacturer1', 200, 750, 'Airline1', 10000.5),
        (2,'Model2','Manufacturer2', 250, 800, 'Airline2', 15000.5),
        (3,'Model3','Manufacturer3', 150, 700, 'Airline3', 12000.5),
        (4,'Model4','Manufacturer4', 180, 650, 'Airline4', 9000.5),
-       (5,'Model5','Manufacturer5', 230, 750, 'Airline5', 11000.5);
+       (5,'Model5','Manufacturer5', 230, 750, 'Airline5', 11000.5),
+       (6,'Model5','Manufacturer5', 230, 750, 'Airline5', 11000.5),
+       (7,'Model5','Manufacturer5', 230, 750, 'Airline5', 11000.5);
