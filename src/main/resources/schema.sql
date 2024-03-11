@@ -1,6 +1,6 @@
 drop table if exists Planes;
 
-CREATE TABLE Planes (
+CREATE TABLE PLANES (
     id identity,
     model VARCHAR(255) not null,
     manufacturer VARCHAR(255) not null,
@@ -11,7 +11,7 @@ CREATE TABLE Planes (
     PRIMARY KEY (id)
 );
 
-INSERT INTO Planes(id, model, manufacturer, capacity, maxSpeed, airline, fuelCapacity)
+INSERT INTO PLANES(id, model, manufacturer, capacity, maxSpeed, airline, fuelCapacity)
 VALUES (1,'Model1','Manufacturer1', 200, 750, 'Airline1', 10000.5),
        (2,'Model2','Manufacturer2', 250, 800, 'Airline2', 15000.5),
        (3,'Model3','Manufacturer3', 150, 700, 'Airline3', 12000.5),

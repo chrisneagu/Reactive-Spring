@@ -3,6 +3,7 @@ package com.example.webfluxdemo.service;
 import com.example.webfluxdemo.dao.PlaneRepository;
 import com.example.webfluxdemo.entity.Plane;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -16,7 +17,22 @@ public class PlaneServiceImpl
     }
 
     @Override
+    public Flux<Plane> findAll() {
+        return planeRepository.findAll();
+    }
+
+    @Override
     public Mono<Plane> findById(Long id) {
         return planeRepository.findById(id);
+    }
+
+    @Override
+    public Mono<Plane> save(Mono<Plane> plane) {
+        return plane.flatMap(planeRepository::save);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        planeRepository.deleteById(id);
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode(exclude = "id")
-@Table(name = "Planes")
+@Table(name = "PLANES")
 public class Plane {
     @Id
     private int id;
