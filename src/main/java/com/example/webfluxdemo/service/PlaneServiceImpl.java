@@ -21,17 +21,26 @@ public class PlaneServiceImpl
     }
 
     @Override
-    public Mono<Plane> findById(Long id) {
-        return planeRepository.findById(id);
-    }
-
-    @Override
     public Flux<Plane> findAll() {
         return planeRepository.findAll();
     }
 
     @Override
+    public Mono<Plane> findById(Long id) {
+        return planeRepository.findById(id);
+    }
+
+    @Override
     public Mono<Set<Plane>> findAllHashSet() {
         return planeRepository.findAll().collect(Collectors.toCollection(HashSet::new));
+
+    @Override
+    public Mono<Plane> save(Mono<Plane> plane) {
+        return plane.flatMap(planeRepository::save);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        planeRepository.deleteById(id);
     }
 }
