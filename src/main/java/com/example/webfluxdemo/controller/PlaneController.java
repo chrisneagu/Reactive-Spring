@@ -28,7 +28,7 @@ public class PlaneController {
     }
 
     @GetMapping("/{id}")
-    public Mono<Plane> planeById(@PathVariable("id") Long id) {
+    public Mono<Plane> planeById(@PathVariable("id") Integer id) {
         return planeService.findById(id);
     }
 
@@ -44,7 +44,7 @@ public class PlaneController {
 
     @PostMapping(path = "add", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Plane> postPlane(@RequestBody Mono<Plane> plane){
-        return planeService.save(plane);
+    public Mono<Plane> postPlane(@RequestBody Plane plane){
+        return planeService.update(plane);
     }
 }

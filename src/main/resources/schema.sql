@@ -12,15 +12,16 @@ CREATE TABLE PLANES (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE REPORT (
-    id INTEGER PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    url VARCHAR(255) NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
-    news_site VARCHAR(255) NOT NULL,
-    summary VARCHAR(255) NOT NULL,
-    published_at DATE NOT NULL,
-    updated_at DATE NOT NULL
+CREATE TABLE REPORTS (
+    id identity,
+    title VARCHAR(251) NOT NULL,
+    url VARCHAR(201) NOT NULL,
+    image_url VARCHAR(201) NOT NULL,
+    news_site TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    published_at VARCHAR(255) NOT NULL,
+    updated_at VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
 );
 
 INSERT INTO PLANES(model, manufacturer, capacity, maxSpeed, airline, fuelCapacity)

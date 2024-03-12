@@ -9,9 +9,9 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface PlaneRepository
         extends ReactiveCrudRepository<Plane, Long> {
-    Mono<Plane> findById(Long id);
+    Mono<Plane> findById(Integer id);
 
     Flux<Plane> findAll();
 
-    Mono<Plane> save(Plane plane);
+    Mono<Plane> save(final Plane plane);
 }

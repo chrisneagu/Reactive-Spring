@@ -23,7 +23,7 @@ public class ReportController {
     }
 
     @GetMapping("/{id}")
-    public Mono<Report> reportById(@PathVariable("id") Long id) {
+    public Mono<Report> reportById(@PathVariable("id") Integer id) {
         return reportService.findById(id);
     }
 

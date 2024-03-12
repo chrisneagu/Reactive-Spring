@@ -8,8 +8,8 @@ import java.util.Set;
 
 public interface PlaneService {
     Flux<Plane> findAll();
-    Mono<Plane> findById(Long id);
+    Mono<Plane> findById(Integer id);
     Mono<Set<Plane>> findAllHashSet();
-    Mono<Plane> save(Mono<Plane> plane);
-    void deleteById(Long id);
+    Mono<Plane> save(final Plane plane);
+    Mono<Plane> update(final Plane plane);
 }

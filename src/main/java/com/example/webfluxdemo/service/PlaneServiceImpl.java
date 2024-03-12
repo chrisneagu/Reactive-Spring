@@ -26,7 +26,7 @@ public class PlaneServiceImpl
     }
 
     @Override
-    public Mono<Plane> findById(Long id) {
+    public Mono<Plane> findById(Integer id) {
         return planeRepository.findById(id);
     }
 
@@ -36,12 +36,21 @@ public class PlaneServiceImpl
     }
 
     @Override
-    public Mono<Plane> save(Mono<Plane> plane) {
-        return plane.flatMap(planeRepository::save);
+    public Mono<Plane> save(final Plane plane) {
+        return planeRepository.save(plane);
     }
 
     @Override
-    public void deleteById(Long id) {
-        planeRepository.deleteById(id);
+    public Mono<Plane> update(final Plane plane) {
+        return planeRepository.findById(plane.getId())
+                .flatMap(p -> {
+                    p.setAirline(plane.getAirline());
+                    p.setCapacity(plane.getCapacity());
+                    p.setModel(plane.getModel());
+                    p.setManufacturer(plane.getManufacturer());
+                    p.setMaxSpeed(plane.getMaxSpeed());
+                    p.setFuelCapacity(plane.getFuelCapacity());
+                    return planeRepository.save(p);
+                }).switchIfEmpty(planeRepository.save(plane.setAsNew()));
     }
 }
