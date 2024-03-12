@@ -9,9 +9,8 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
+@NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode()
 @Table(name = "REPORTS")
 public class Report implements Persistable<Integer> {
     @Id
@@ -32,6 +31,16 @@ public class Report implements Persistable<Integer> {
     @Column("updated_at")
     private @NonNull String updated_at;
 
+    public Report(Integer id, @NonNull String title, @NonNull String url, @NonNull String image_url, @NonNull String news_site, @NonNull String summary, @NonNull String published_at, @NonNull String updated_at) {
+        this.id = id;
+        this.title = title;
+        this.url = url;
+        this.image_url = image_url;
+        this.news_site = news_site;
+        this.summary = summary;
+        this.published_at = published_at;
+        this.updated_at = updated_at;
+    }
 
     @Transient
     @JsonIgnore

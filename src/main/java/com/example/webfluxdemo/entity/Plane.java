@@ -9,9 +9,8 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
+@NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode()
 @Table(name = "PLANES")
 public class Plane implements Persistable<Integer> {
     @Id
@@ -30,19 +29,14 @@ public class Plane implements Persistable<Integer> {
     @Column("fuelCapacity")
     private double fuelCapacity;
 
-    @Transient
-    @JsonIgnore
-    private boolean newPlane;
-
     @Override
     @JsonIgnore
     @Transient
     public boolean isNew() {
-        return this.newPlane || id == null;
+        return id == null;
     }
 
     public Plane setAsNew(){
-        this.newPlane = true;
         return this;
     }
 }
