@@ -1,7 +1,7 @@
 package com.example.webfluxdemo.service;
 
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 
 import com.example.webfluxdemo.dao.ReportRepository;
@@ -53,11 +53,10 @@ public class ReportServiceUnitTest {
 
         Flux<Report> theMockReports = Flux.just(aMockReport1, aMockReport2);
 
-        when(reportRepository.saveAll(any(Flux.class)))
+        when(reportRepository.saveAll( any(Flux.class)))
                 .thenReturn(theMockReports);
 
-        Flux<Report> newReports = reportService.saveAll(null);
-
+        Flux<Report> newReports = reportService.saveAll(theMockReports);
         StepVerifier.create(newReports)
                 .consumeNextWith(report -> {
                     assertNotNull(report);

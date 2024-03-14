@@ -8,6 +8,6 @@ public interface ReportService {
     Flux<Report> findAll();
     Mono<Report> findById(Integer id);
     Flux<Report> saveAll(Flux<Report> reports);
-    Mono<Report> update(final Report report);
+    Mono<Report> insert(final Report report);
     Flux<Report> fetchReports();
 }

@@ -30,34 +30,12 @@ public class ReportServiceImpl implements ReportService {
     }
 
     public Flux<Report> saveAll(Flux<Report> reports) {
-        return reports.flatMap(report ->
-                reportRepository.findById(report.getId())
-                        .flatMap(existingReport -> {
-                            existingReport.setUpdatedAt(report.getUpdatedAt());
-                            existingReport.setSummary(report.getSummary());
-                            existingReport.setUrl(report.getUrl());
-                            existingReport.setTitle(report.getTitle());
-                            existingReport.setImageUrl(report.getImageUrl());
-                            existingReport.setPublishedAt(report.getPublishedAt());
-                            existingReport.setNewsSite(report.getNewsSite());
-                            return reportRepository.save(existingReport);
-                        })
-                        .switchIfEmpty(reportRepository.save(report.setAsNew())));
+        return reportRepository.saveAll(reports);
     }
 
     @Override
-    public Mono<Report> update(final Report report) {
-        return reportRepository.findById(report.getId())
-                .flatMap(r -> {
-                    r.setUpdatedAt(report.getUpdatedAt());
-                    r.setSummary(report.getSummary());
-                    r.setUrl(report.getUrl());
-                    r.setTitle(report.getTitle());
-                    r.setImageUrl(report.getImageUrl());
-                    r.setPublishedAt(report.getPublishedAt());
-                    r.setNewsSite(report.getNewsSite());
-                    return reportRepository.save(r);
-                }).switchIfEmpty(reportRepository.save(report.setAsNew()));
+    public Mono<Report> insert(final Report report) {
+        return reportRepository.save(report);
     }
 
     public Flux<Report> fetchReports() {

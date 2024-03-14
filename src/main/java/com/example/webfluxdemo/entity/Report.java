@@ -31,19 +31,10 @@ public class Report implements Persistable<Integer> {
     @Column("updated_at")
     private @NonNull String updatedAt;
 
-    @Transient
-    @JsonIgnore
-    private boolean newReport;
-
     @Override
     @JsonIgnore
     @Transient
     public boolean isNew() {
-        return this.newReport || id == null;
-    }
-
-    public Report setAsNew(){
-        this.newReport = true;
-        return this;
+        return true;
     }
 }
