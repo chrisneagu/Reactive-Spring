@@ -17,12 +17,10 @@ import reactor.core.publisher.Mono;
 @CrossOrigin(origins = "*")
 public class ReportController {
     private final ReportService reportService;
-    private final WebClient webClient;
 
     private static final Logger log = (Logger) LoggerFactory.getLogger(ReportController.class);
-    public ReportController(ReportService reportService, WebClient webClient) {
+    public ReportController(ReportService reportService) {
         this.reportService = reportService;
-        this.webClient = webClient;
     }
 
     @GetMapping("/{id}")
@@ -37,21 +35,11 @@ public class ReportController {
         return reportService.findAll().log();
     }
 
-    public Flux<Report> fetchReports() {
-        log.info("Fetching reports from external API");
-        return webClient
-                .get()
-                .uri("https://api.spaceflightnewsapi.net/v4/reports/")
-                .retrieve()
-                .bodyToMono(ReportsPage.class)
-                .flatMapMany(page -> Flux.fromIterable(page.getResults()))
-                .log();
-    }
-
     @GetMapping("/fetch/external")
     public Flux<Report> fetchReportsExternal() {
-        log.info("Populating database from external datasource");
-        Flux<Report> reports = fetchReports();
+        log.info("Fetching reports from external API");
+        Flux<Report> reports = reportService.fetchReports();
+        log.info("Populating database from external DataSource");
         reportService.saveAll(reports)
                 .log()
                 .subscribe();

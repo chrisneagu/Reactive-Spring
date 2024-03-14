@@ -21,26 +21,15 @@ public class Report implements Persistable<Integer> {
     @Column("url")
     private @NonNull String url;
     @Column("image_url")
-    private @NonNull String image_url;
+    private @NonNull String imageUrl;
     @Column("news_site")
-    private @NonNull String news_site;
+    private @NonNull String newsSite;
     @Column("summary")
     private @NonNull String summary;
     @Column("published_at")
-    private @NonNull String published_at;
+    private @NonNull String publishedAt;
     @Column("updated_at")
-    private @NonNull String updated_at;
-
-    public Report(Integer id, @NonNull String title, @NonNull String url, @NonNull String image_url, @NonNull String news_site, @NonNull String summary, @NonNull String published_at, @NonNull String updated_at) {
-        this.id = id;
-        this.title = title;
-        this.url = url;
-        this.image_url = image_url;
-        this.news_site = news_site;
-        this.summary = summary;
-        this.published_at = published_at;
-        this.updated_at = updated_at;
-    }
+    private @NonNull String updatedAt;
 
     @Transient
     @JsonIgnore

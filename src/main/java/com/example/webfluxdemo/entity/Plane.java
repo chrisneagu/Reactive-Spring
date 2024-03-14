@@ -29,14 +29,19 @@ public class Plane implements Persistable<Integer> {
     @Column("fuelCapacity")
     private double fuelCapacity;
 
+    @Transient
+    @JsonIgnore
+    private boolean newPlane;
+
     @Override
     @JsonIgnore
     @Transient
     public boolean isNew() {
-        return id == null;
+        return this.newPlane || id == null;
     }
 
     public Plane setAsNew(){
+        this.newPlane = true;
         return this;
     }
 }

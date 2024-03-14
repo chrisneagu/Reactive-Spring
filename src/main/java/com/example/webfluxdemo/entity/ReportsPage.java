@@ -1,8 +1,6 @@
 package com.example.webfluxdemo.entity;
 
-import jakarta.annotation.PostConstruct;
 import lombok.*;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
@@ -12,5 +10,5 @@ public class ReportsPage {
     private int count;
     private String next;
     private String previous;
-    private List<Report> results;
+    private List<ReportDTO> results;
 }

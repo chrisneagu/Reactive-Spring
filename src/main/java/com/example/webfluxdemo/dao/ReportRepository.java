@@ -1,6 +1,5 @@
 package com.example.webfluxdemo.dao;
 
-import com.example.webfluxdemo.entity.Plane;
 import com.example.webfluxdemo.entity.Report;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
