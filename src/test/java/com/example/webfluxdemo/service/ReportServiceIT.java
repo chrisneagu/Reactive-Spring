@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
-public class ReportServiceIntegrationTest {
+public class ReportServiceIT {
     @Autowired
     private ReportService reportService;
     @Test
