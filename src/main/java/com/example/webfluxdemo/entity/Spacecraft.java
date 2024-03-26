@@ -11,8 +11,8 @@ import org.springframework.data.relational.core.mapping.Table;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "PLANES")
-public class Plane implements Persistable<Integer> {
+@Table(name = "SPACECRAFTS")
+public class Spacecraft implements Persistable<Integer> {
     @Id
     @Column("id")
     private Integer id;
@@ -24,24 +24,24 @@ public class Plane implements Persistable<Integer> {
     private int capacity;
     @Column("maxSpeed")
     private int maxSpeed;
-    @Column("airline")
-    private @NonNull String airline;
+    @Column("company")
+    private @NonNull String company;
     @Column("fuelCapacity")
     private double fuelCapacity;
 
     @Transient
     @JsonIgnore
-    private boolean newPlane;
+    private boolean newSpacecraft;
 
     @Override
     @JsonIgnore
     @Transient
     public boolean isNew() {
-        return this.newPlane || id == null;
+        return this.newSpacecraft || id == null;
     }
 
-    public Plane setAsNew(){
-        this.newPlane = true;
+    public Spacecraft setAsNew(){
+        this.newSpacecraft = true;
         return this;
     }
 }

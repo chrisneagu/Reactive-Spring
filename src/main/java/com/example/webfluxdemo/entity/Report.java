@@ -1,6 +1,7 @@
 package com.example.webfluxdemo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.annotation.Nullable;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -30,7 +31,8 @@ public class Report implements Persistable<Integer> {
     private @NonNull String publishedAt;
     @Column("updated_at")
     private @NonNull String updatedAt;
-
+    @Column("details")
+    private @Nullable String details;
     @Override
     @JsonIgnore
     @Transient

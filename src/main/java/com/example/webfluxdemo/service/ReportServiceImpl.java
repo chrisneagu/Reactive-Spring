@@ -54,6 +54,7 @@ public class ReportServiceImpl implements ReportService {
                     report.setSummary(reportDto.getSummary());
                     report.setPublishedAt(reportDto.getPublished_at());
                     report.setUpdatedAt(reportDto.getUpdated_at());
+
                     return report;
                 }))
                 .log();
